@@ -34,27 +34,27 @@ $combinations=
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=15 --no-mask
      --basedir=/TokuDB-Debug',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=20 --no-mask
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
      --basedir=/TokuDB-Debug',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=17 --mask-level=1 --validator=Transformer
      --basedir=/TokuDB-Debug --mysqld=--enforce-storage-engine=TokuDB',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=13 --mask-level=1 --validator=Transformer
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=1  --no-mask
      --basedir=/TokuDB-Debug',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=11 --mask-level=1 --validator=Transformer
      --basedir=/TokuDB-Debug',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=25 --no-mask
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=8 --mask-level=1 --validator=Transformer
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=10 --no-mask
      --basedir=/TokuDB-Debug',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=15 --no-mask
-     --basedir=/TokuDB-Valgrind --valgrind --reporter=ValgrindErrors --validator=MarkErrorLog',
+     --basedir=/TokuDB-Valgrind --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=15 --mask-level=1 --validator=Transformer
      --basedir=/TokuDB-Optimized',
   '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
