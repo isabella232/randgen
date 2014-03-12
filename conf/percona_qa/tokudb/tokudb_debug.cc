@@ -29,20 +29,14 @@ $combinations=
   --seed=random --duration=300 --querytimeout=60 --short_column_names
   --reporter=Shutdown,Backtrace,QueryTimeout,ErrorLog,ErrorLogAlarm
   --mysqld=--log-output=none --mysqld=--sql_mode=ONLY_FULL_GROUP_BY
-  --mysqld=--utility-user-password=test
+  --mysqld=--loose-utility-user-password=test
  '],[
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=15 --no-mask
-     --basedir=/TokuDB-Debug',
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
-     --basedir=/TokuDB-Debug',
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=17 --mask-level=1 --validator=Transformer
-     --basedir=/TokuDB-Debug --mysqld=--enforce-storage-engine=TokuDB',
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=1  --no-mask
-     --basedir=/TokuDB-Debug',
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=11 --mask-level=1 --validator=Transformer
-     --basedir=/TokuDB-Debug',
-  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=10 --no-mask
-     --basedir=/TokuDB-Debug'
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=15 --no-mask',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=17 --mask-level=1 --validator=Transformer --mysqld=--enforce-storage-engine=TokuDB',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=1  --no-mask',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=11 --mask-level=1 --validator=Transformer',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=10 --no-mask'
  ],[ 
   '--mysqld=--loose-tokudb_cache_size=1000000000 --mysqld=--tokudb_directio=ON',
   '--mysqld=--loose-tokudb_cache_size=1000000000 --mysqld=--tokudb_directio=OFF',

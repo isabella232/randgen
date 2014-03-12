@@ -23,32 +23,24 @@
 # Workarounds
 # --mysqld=--utility-user-password=test in top block: to avoid assert BUG #
 
-$work_dir = '/mnt/ssd/'
-$tokudb_version =  ''
-$tokudb_debug_dir = $work_dir . $tokudb_version . '-debug-e-linux-x86_64'
-$tokudb_valgrind_dir = $work_dir . $tokudb_version . '-valgrind-e-linux-x86_64'
-$tokudb_optimized_dir = $work_dir . $tokudb_version . '-e-linux-x86_64'
-
 $combinations=
 [
  ['
   --seed=random --duration=300 --querytimeout=60 --short_column_names
   --reporter=Shutdown,Backtrace,QueryTimeout,ErrorLog,ErrorLogAlarm
   --mysqld=--log-output=none --mysqld=--sql_mode=ONLY_FULL_GROUP_BY
-  --mysqld=--utility-user-password=test
+  --mysqld=--loose-utility-user-password=test
  '],[
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=20 --no-mask
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog",
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog",
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=13 --mask-level=1 --validator=Transformer
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog",
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=25 --no-mask
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog",
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=8 --mask-level=1 --validator=Transformer
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog",
-  "--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=15 --no-mask
-     --basedir=$tokudb_valgrind_dir --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog"
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=20 --no-mask
+     --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=1  --no-mask
+     --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz1 --threads=13 --mask-level=1 --validator=Transformer --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=25 --no-mask
+     --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz2 --threads=8 --mask-level=1 --validator=Transformer --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog',
+  '--grammar=conf/percona_qa/tokudb/tokudb.yy --gendata=conf/percona_qa/tokudb/tokudb.zz3 --threads=15 --no-mask
+     --valgrind --valgrind_options=--soname-synonyms=somalloc=NONE --reporter=ValgrindErrors --validator=MarkErrorLog'
  ],[ 
   '--mysqld=--loose-tokudb_cache_size=1000000000 --mysqld=--tokudb_directio=ON',
   '--mysqld=--loose-tokudb_cache_size=1000000000 --mysqld=--tokudb_directio=OFF',
