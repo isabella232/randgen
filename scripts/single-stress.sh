@@ -33,7 +33,7 @@ export grammar=
 #    export SOURCE="/home/bob/tokutek/mysql-releases"
 #    export TAR=mysql-5.5.29-linux2.6-x86_64
 
-export SOURCE=""
+export SOURCE="/mnt/ssd"
 export TAR=
 
 if [ ! -f ${SOURCE}/${TAR}.tar.gz ] ; then
@@ -56,18 +56,30 @@ mkdir ${VARDIR}
 
 # Create this dummy directory so that "percona-qa/startup.sh 1 man"
 # will work in the event that additional tracing might be needed.
-mkdir current1_1
+mkdir ${DB_DIR}/current1_1
 
-RQG_DIR=/home/joel/randgen
+RQG_DIR=/home/joel/github/randgen
 
 export numQueries=100000000
 export numThreads=64
 export secDuration=300
 #export debugSwitch=--debug
 export sqlLog1=--mysqld=--general_log
-
+#export sqlTrace=--sqltrace
 
 pushd ${RQG_DIR}
-./runall.pl --grammar=conf/galera/${grammar} --duration=${secDuration} --queries=${numQueries} --threads=${numThreads} --basedir=${BASEDIR} --vardir=${VARDIR} --mask-level=0 --mask=0 --seed=1 ${debugSwitch} ${sqlLog1} --sqltrace 
+
+./runall.pl --grammar=conf/temporal/${grammar} --duration=${secDuration} --queries=${numQueries} --threads=${numThreads} --basedir=${BASEDIR} --vardir=${VARDIR} --mask-level=0 --mask=0 --seed=1 ${debugSwitch} ${sqlLog1} ${sqlTrace} > ${DB_DIR}/trial1.log 2>&1 
+
+# This line echoes the actual command to the vardir1_1/command file
+# which can be useful to grab it for posterity.
+
+echo "./runall.pl --grammar=conf/temporal/${grammar} --duration=${secDuration} --queries=${numQueries} --threads=${numThreads} --basedir=${BASEDIR} --vardir=${VARDIR} --mask-level=0 --mask=0 --seed=1 ${debugSwitch} ${sqlLog1} ${sqlTrace}" > ${VARDIR}/command
+
+popd
+
+pushd ${DB_DIR}
+
+tar -zhcf vardir1_1.tar.gz ./vardir1_1
 
 popd
